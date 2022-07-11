@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess board</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 900px;
+            height: 900px;
+        }
+
+        td {
+            border: 1px solid black;
+            text-align: center;
+            width: 100px;
+            height: 100px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <table id="board"></table>
+</body>
+<script>
+    const abc = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+    const board = document.getElementById('board');
+    for(let i = 0; i < 9; i++) {
+        const row = document.createElement('tr');
+        if(i == 0) {
+            row.style.backgroundColor = 'gold';
+        } 
+        for(let j = 0; j < 9; j++) {
+            const cell = document.createElement('td');
+            if(j == 0) {
+                cell.style.backgroundColor = 'gold';
+                if(i != 0) {
+                    cell.innerText = abc[i - 1];
+                }
+            }
+            if(i == 0 && j != 0) {
+                cell.innerText = j;
+            }
+            if(i != 0 && i % 2 == 0) {
+                if(j != 0 && j % 2 == 0) {
+                    cell.style.backgroundColor = 'green';
+                } else if(j != 0 && j % 2 != 0) {
+                    cell.style.backgroundColor = 'red';
+                }
+            } else if (i != 0 && i % 2 != 0) {
+                if(j != 0 && j % 2 == 0) {
+                    cell.style.backgroundColor = 'red';
+                } else if(j != 0 && j % 2 != 0) {
+                    cell.style.backgroundColor = 'green';
+                }
+            }
+            row.append(cell);
+        }
+        board.append(row);
+    }
+</script>
+</html>
