@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-size: 25px;
+        }
+
+        .light {
+            background-color: white;
+            color: black;
+        }
+        
+        .dark {
+            background-color: black;
+            color: white;
+        }
+
+        h1 {
+            text-align: center;
+            text-transform: capitalize;
+        }
+
+        #change-theme {
+            text-transform: capitalize;
+            position: fixed;
+            padding: 10px 20px;
+            font-size: 30px;
+            top: 5%;
+            left: 80%;
+            border: 0;
+        }
+
+        .light #change-theme {
+            background-color: black;
+            color: white;
+        }
+
+        .light #change-theme:hover {
+            background-color: hsl(0, 0%, 20%);
+        }
+    </style>
+</head>
+<body class="light">
+    <button id="change-theme">dark</button>
+    <h1 style="text-transform: uppercase;">CSS căn bản</h1>
+    <div>
+        <h3>Các bộ chọn trong CSS:</h3>
+        <p>Các bộ chọn trong CSS (selector) cho phép chúng ta chọn và thao tác với các phần tử HTML mà mình mong muốn.</p>
+        <p>Bộ chọn được sử dụng để “tìm” (hoặc chọn) phần tử HTML dựa trên id, class, loại thẻ, các thuộc tính, và nhiều thứ khác của phần tử HTML.</p>
+        <ol id="selector-list">
+            <li>Bộ chọn phần tử (element selector)</li>
+            <p>Chọn phần tử dựa vào tên phần tử (tên thẻ) HTML</p>
+            <li>Bộ chọn ID</li>
+            <p>
+                <strong>Bộ chọn id</strong> sử dụng thuộc tính id của một phần tử HTML để chỉ định cụ thể một phần tử HTML nào đó.<br>
+                Một id nên là <strong>duy nhất</strong> trong một trang, do đó bộ chọn id được sử dụng khi muốn áp dụng kiểu cho một phần tử duy nhất nào đó trên trang.<br>
+                Để chọn một phần tử với một id cụ thể, chỉ cần viết kí hiệu # trước id (giá trị của thuộc tính id) của phần tử đó.
+            </p>
+            <li>Bộ chọn class</li>
+            <p>
+                Bộ chọn class (class selector) chọn các phần tử có thuộc tính class với một giá trị cụ thể.<br>
+                Để chọn các phần tử với một class cụ thể, chỉ cần viết thêm dấu chấm (.) trước tên của class
+            </p>
+        </ol>
+    </div>
+</body>
+<script>
+    document.querySelector('#change-theme').addEventListener('click', (e) => {
+        const currentTheme = e.currentTarget.textContent;
+        if(currentTheme == 'dark') {
+            document.body.classList.remove('light');
+            document.body.classList.add('dark');
+            e.currentTarget.innerText = 'light';
+        } else {
+            document.body.classList.remove('dark');
+            document.body.classList.add('light');
+            e.currentTarget.innerText = 'dark';
+        }
+    });
+</script>
+</html>
